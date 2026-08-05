@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f8fff9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 50px 20px;
+}
+
+.app {
+  width: 100%;
+  max-width: 900px;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #43b97f;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Form Card */
+.profile-form {
+  background: #fff;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 30px;
+
+  margin-bottom: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #43b97f;
+  box-shadow: 0 0 0 4px rgba(67, 185, 127, 0.15);
+  background: #fff;
+}
+
+/* Height Inputs */
+.height-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.height-inputs input {
+  flex: 1;
+}
+
+.height-inputs span {
+  font-weight: 600;
+  color: #666;
+}
+
+/* Submit Button */
+.submit-btn {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #43b97f;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.submit-btn:hover {
+  background: #379b69;
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Results Card */
+.results-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 25px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.results-card p {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.results-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .profile-form {
+    grid-template-columns: 1fr;
+    padding: 25px;
+  }
+
+  .app-title {
+    font-size: 2.5rem;
+  }
+
+  .height-inputs {
+    flex-wrap: wrap;
+  }
+}
