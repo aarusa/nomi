@@ -22,24 +22,39 @@ const ResultsCard = ({userData}) => {
         }
     }
 
+    const activityMultipliers = {
+        'sedentary': 1.2,
+        'lightly-active': 1.375,
+        'active': 1.55,
+        'highly-active': 1.725,
+        'extremely-active': 1.9
+    };
+
     const calcualteTDEE = () => {
-        let acl = 0;
-        if(
-            user.activity == 'sedentary' ? acl = (bmr * 1.2) : 
-            user.activity == 'lightly-active' ? (acl = bmr * 1.375) : 
-            user.activity == 'moderately-active' ? (acl = bmr * 1.55) : 
-            user.activty == 'very-active' ? (acl = bmr * 1.725) : (acl = bmr * 1.9)
-        );
-        return acl.toFixed(2);
+        const multiplier = activityMultipliers[user.activity] || 1.2;
+        return (bmr * multiplier).toFixed(2);
     }
 
     const calculateCalories = () => {
+
         let calories = 0;
-        if(
-            user.goal == 'lose-weight' ? calories = tdee - 300 :
-            user.goal == 'gain-weight' ? calories = tdee + 300 :
-            calories = tdee
-        )
+
+        if(user.goal === 'lose-weight'){
+            calories = Number(tdee) - 300;
+        }else if(user.goal === 'gain-weight'){
+            calories = Number(tdee) + 300;
+        }else {
+            calories = Number(tdee);
+        }
+
+        if(user.gender == 'male' && calories < 1500){
+            calories = 1500;
+        }
+
+        if(user.gender == 'female' && calories < 1200){
+            calories = 1200;
+        }
+
         return calories.toFixed(2);
     }
 
@@ -53,7 +68,7 @@ const ResultsCard = ({userData}) => {
             <p>Body Mass Index (BMI): {bmi} (Healthy)</p>
             <p>Basal Metabolic Rate (BMR): {bmr} kcal</p>
             <p>Total Daily Energy Expenditure (TDEE): {tdee} calories per day</p>
-            <p>Daily Calorie Target: {calories} kcal</p>
+            <p>Daily Calorie Target: {calories} kcal per day</p>
         </div>
      );
 }
