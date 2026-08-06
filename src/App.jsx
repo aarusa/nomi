@@ -10,7 +10,10 @@ const App = () => {
     <div className="app">
       <h1 className="app-title">Nomi</h1>
       <ProfileForm userData={userData} setUserData={setUserData} />
-      <ResultsCard />
+      {userData.length > 0 && 
+        <ResultsCard userData={userData} />
+      }
+      
     </div>
    );
 }

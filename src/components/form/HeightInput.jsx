@@ -1,11 +1,11 @@
 const HeightInput = ({ label, feet, inch, onInputChange }) => {
     return ( 
         <div className="form-group">
-          <label htmlFor={name}>{label}</label>
+          <label htmlFor="heightFeet">{label}</label>
 
           <div className="height-inputs">
             <input 
-                name="heightinf"
+                name="heightFeet"
                 type="number" 
                 min="0" 
                 placeholder="Feet" 
@@ -15,7 +15,7 @@ const HeightInput = ({ label, feet, inch, onInputChange }) => {
             <span>ft</span>
 
             <input 
-                name="heightini"
+                name="heightInch"
                 type="number" 
                 min="0" 
                 placeholder="Inch"
