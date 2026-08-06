@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ProfileForm from "./components/ProfileForm";
-import ResultsCard from "./components/ResultsCard";
+import ResultPanel from "./components/ResultPanel";
 
 const App = () => {
 
@@ -11,7 +11,7 @@ const App = () => {
       <h1 className="app-title">Nomi</h1>
       <ProfileForm userData={userData} setUserData={setUserData} />
       {userData.length > 0 && 
-        <ResultsCard userData={userData} />
+        <ResultPanel userData={userData} />
       }
       
     </div>
