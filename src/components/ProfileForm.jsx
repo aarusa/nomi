@@ -1,49 +1,88 @@
 import { useState } from "react";
+import TextInput from "./form/TextInput";
+import NumberInput from "./form/NumberInput";
+import SelectInput from "./form/SelectInput";
+import HeightInput from "./form/HeightInput";
 
-const ProfileForm = () => {
+const ProfileForm = ({userData, setUserData}) => {
     
+    const [formData, setFormData] = useState({
+        name: '',
+        age: '',
+        gender: 'Male',
+        heightinf: '',
+        heightini: '',
+        weight: '',
+        goal: '🏃 Lose Weight'
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData, [e.target.name]: e.target.value,
+        });
+    }
+
     return ( 
         <div className="profile-form">
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input type="text" placeholder="Enter name" />
-        </div> 
-        <div className="form-group">
-          <label htmlFor="age">Age</label>
-          <input type="number"min="0" placeholder="Enter age" />
-        </div>  
-        <div className="form-group">
-          <label htmlFor="gender">Gender</label>
-          <select>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>  
-        <div className="form-group">
-          <label htmlFor="height">Height</label>
 
-          <div className="height-inputs">
-            <input type="number" min="0" placeholder="Feet" />
-            <span>ft</span>
+        <TextInput 
+            name="name" 
+            label="Name" 
+            value={formData.name} 
+            placeholder="Enter name" 
+            onInputChange={handleChange} 
+        />
 
-            <input type="number" min="0" placeholder="Inch" />
-            <span>in</span>
-          </div>
-        </div>
-        <div className="form-group">
-          <label htmlFor="weight">Weight (kg)</label>
-          <input type="number" min="0" placeholder="Enter weight in kg" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="purpose">What's your goal?</label>
-          <select>
-            <option value="lose-weight">🏃 Lose Weight</option>
-            <option value="build-muscle">💪 Build Muscle</option>
-            <option value="maintain-weight">⚖️ Maintain Weight</option>
-            <option value="eat-healthier">🍎 Eat Healthier</option>
-          </select>
-        </div>  
+        <NumberInput 
+            name="age" 
+            label="Age" 
+            min="0"
+            value={formData.age} 
+            placeholder="Enter age" 
+            onInputChange={handleChange} 
+        /> 
+
+        <SelectInput
+            name="gender"
+            label="Gender"
+            value={formData.gender}
+            onInputChange={handleChange}
+            options={[
+                {value: 'male', label: 'Male'},
+                {value: 'female', label: 'Female'},
+                {value: 'others', label: 'Others'}
+            ]}
+        /> 
+
+        <HeightInput 
+            label="Height"
+            feet={formData.heightinf}
+            inch={formData.heightini}
+            onInputChange={handleChange}
+        />
+
+        <NumberInput 
+            name="weight" 
+            label="Weight (kg)" 
+            min="0"
+            value={formData.weight} 
+            placeholder="Enter weight in kg" 
+            onInputChange={handleChange} 
+        />  
+
+        <SelectInput
+            name="goal"
+            label="What's your goal"
+            value={formData.goal}
+            onInputChange={handleChange}
+            options={[
+                {value: 'lose-weight', label: '🏃 Lose Weight'},
+                {value: 'build-muscle', label: '💪 Build Muscle'},
+                {value: 'maintain-weight', label: '⚖️ Maintain Weight'},
+                {value: 'eat-healthier', label: '🍎 Eat Healthier'},
+            ]}
+        /> 
+
         <button className="submit-btn">Submit</button>   
       </div>
      );
