@@ -101,34 +101,37 @@ const ResultPanel = ({userData}) => {
     const calories = calculateCalories();
 
     return ( 
-        <div className="results-card">
-            <ResultCard
-                title="Body Mass Index (BMI)" 
-                val1={bmi} 
-                val2={bmiInfo.classification} 
-                message={bmiInfo.message}
-            />
+        <div className="results-container">
+            
+            <div className="results-card">
+                <ResultCard
+                    title="⚖️ Body Mass Index (BMI)" 
+                    val1={bmi} 
+                    val2={bmiInfo.classification} 
+                    message={bmiInfo.message}
+                />
 
-            <ResultCard
-                title="Daily Calorie Target" 
-                val1={calories} 
-                val2='kcal'
-                message="Total calories you need to eat to hit your personal goal."
-            />
+                <ResultCard
+                    title="🍽️ Daily Calorie Target" 
+                    val1={calories} 
+                    val2='kcal'
+                    message="Total calories you need to eat to hit your personal goal."
+                />
 
-            <ResultCard
-                title="Basal Metabolic Rate (BMR)" 
-                val1={bmr} 
-                val2='kcal'
-                message="The baseline calories your body naturally burns just to keep your organs functioning at complete rest."
-            />
+                <ResultCard
+                    title="🔥 Basal Metabolic Rate (BMR)" 
+                    val1={bmr} 
+                    val2='kcal'
+                    message="The baseline calories your body naturally burns just to keep your organs functioning at complete rest."
+                />
 
-            <ResultCard
-                title="Total Daily Energy Expenditure (TDEE)" 
-                val1={tdee} 
-                val2='kcal'
-                message="The total calories your body actually burns per day once you add your daily movement and exercise."
-            />
+                <ResultCard
+                    title="🚶 Total Daily Energy Expenditure (TDEE)" 
+                    val1={tdee} 
+                    val2='kcal'
+                    message="The total calories your body actually burns per day once you add your daily movement and exercise."
+                />
+            </div>
 
         </div>
      );
